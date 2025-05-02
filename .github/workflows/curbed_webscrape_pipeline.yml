@@ -32,5 +32,6 @@ jobs:
 
       - name: Run Curbed Web Scrape Notebook
         run: |
-          papermill notebooks/Curbed_Web_Scrape_Extract_Load_Raw.ipynb notebooks/output/Curbed_output.ipynb
+          papermill notebooks/Curbed_Web_Scrape_Extract_Load_Raw.ipynb
+
 
