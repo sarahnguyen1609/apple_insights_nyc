@@ -32,4 +32,4 @@ jobs:
 
       - name: Run Yelp API Notebook
         run: |
-          papermill notebooks/Yelp_API_Extract_Load_Raw.ipynb notebooks/output/Yelp_output.ipynb
+          papermill notebooks/Yelp_API_Extract_Load_Raw.ipynb
