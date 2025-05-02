@@ -1,0 +1,35 @@
+name: Run Yelp API Extract and Load to Raw
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+env:
+  PG_USER:       ${{ secrets.PG_USER }}
+  PG_PASSWORD:   ${{ secrets.PG_PASSWORD }}
+  PG_HOST:       ${{ secrets.PG_HOST }}
+  PG_DB:         ${{ secrets.PG_DB }}
+
+jobs:
+  extract-load:
+    name: Extract and Load Raw Yelp API Data
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install papermill
+
+      - name: Run Yelp API Notebook
+        run: |
+          papermill notebooks/Yelp_API_Extract_Load_Raw.ipynb notebooks/output/Yelp_output.ipynb
