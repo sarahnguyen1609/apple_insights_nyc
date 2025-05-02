@@ -28,15 +28,8 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install papermill
 
       - name: Run Curbed Web Scrape Notebook
         run: |
-          papermill notebooks/Curbed_Web_Scrape_Extract_Load_Raw.ipynb notebooks/Curbed_Web_Scrape_Extract_Load_Raw_output.ipynb
-
-      - name: Debugging Step
-        run: |
-          env
-          pip list
-
-
+          mkdir -p notebooks/output
+          papermill notebooks/Curbed_Web_Scrape_Extract_Load_Raw.ipynb notebooks/output/Curbed_output.ipynb
