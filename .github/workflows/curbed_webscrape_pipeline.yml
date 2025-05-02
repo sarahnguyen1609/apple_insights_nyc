@@ -2,8 +2,8 @@ name: Run Curbed Web Scrape Extract and Load to Raw
 
 on:
   schedule:
-    - cron: '0 9 * * *'  # Runs daily at 9:00 UTC
-  workflow_dispatch:      # Also allow manual trigger
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
 
 env:
   PG_USER:       ${{ secrets.PG_USER }}
